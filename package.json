@@ -12,8 +12,12 @@
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",
     "@google/generative-ai": "^0.16.0",
+    "@langchain/google-genai": "^0.0.23",
+    "@langchain/pinecone": "^0.0.8",
+    "@pinecone-database/pinecone": "^3.0.0",
     "@slack/bolt": "^3.19.0",
-    "axios": "^1.7.2"
+    "axios": "^1.7.2",
+    "langchain": "^0.2.11"
   },
   "devDependencies": {
     "dotenv": "^16.4.5"
