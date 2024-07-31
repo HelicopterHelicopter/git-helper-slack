@@ -44,12 +44,14 @@ app.message(async ({ message, say }) => {
             pineconeIndex
         });
 
+        const docs2 = await vectorStore.similaritySearch(message.text);
+
         const retriever = vectorStore.asRetriever();
 
         const docs = await retriever.invoke(message.text);
         console.log(docs);
 
-        const prompt = `You are an AI assistant that answers user's queries about a github repo. The code is in javascript. You will be provided with relevant files data in an array of string which is a json object in strified format has the file content. Here is the relevant data ${JSON.stringify(docs)} \n Refer the above data and answer the follow query: ${message.text}`;
+        const prompt = `You are an AI assistant that answers user's queries about a github repo. The code is in javascript. You will be provided with relevant files data in an array of string which is a json object in strified format has the file content. Here is the relevant data ${JSON.stringify(docs2)} \n Refer the above data and answer the follow query: ${message.text}`;
         console.log(prompt);
         const result = await model.invoke([new HumanMessage(prompt)]);
         console.log(result);
